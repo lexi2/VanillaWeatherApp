@@ -1,5 +1,5 @@
 body {
-  font-family: "Times New Roman", Times, serif;
+  font-family: arial, sans-serif;
 }
 
 h1 {
@@ -17,6 +17,8 @@ ul {
 
 li {
   list-style: none;
+  margin: 0;
+  padding: 0;
   color: rgb(135, 135, 135);
   font-size: 16px;
   font-weight: 100;
@@ -42,25 +44,25 @@ li::first-letter {
 }
 
 .current-temperature img {
-  margin-right: 10px;
+  margin-right: 5px;
   height: 64px;
   width: 64px;
 }
 .current-temperature strong {
-  color: rgb(133, 133, 133);
+  color: rgb(33, 33, 33);
   font-size: 64px;
-  font-weight: 400;
   line-height: 1;
+  font-weight: 400;
 }
 
 .current-temperature .units {
   position: relative;
   font-size: 16px;
-  top: -35px;
+  top: -34px;
 }
 
 .current-temperature .active {
-  color: rgb(133, 133, 133);
+  color: rgb(33, 33, 33);
   cursor: default;
   text-decoration: none;
 }
