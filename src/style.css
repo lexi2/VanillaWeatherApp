@@ -21,6 +21,7 @@ li {
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
+  text-transform: capitalize;
 }
 
 .weather-wrapper {
@@ -47,4 +48,10 @@ li {
   font-size: 64px;
   font-weight: 400;
   line-height: 1;
+}
+
+.current-temperature .units {
+  position: relative;
+  font-size: 16px;
+  top: -35px;
 }
