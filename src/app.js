@@ -43,11 +43,21 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+function search(city){
+  let apiKey = "96fc9dbf0bd42fe281a341e984ec7160";
+  let units = "metric";
+  let endpointURL = `https://api.openweathermap.org/data/2.5/weather`;
+  let requestUrl = `${endpointURL}?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(requestUrl).then(displayTemperature);
+}
 
-  // let cityName = document.querySelector("#search-input").value.trim();
-let apiKey = "96fc9dbf0bd42fe281a341e984ec7160";
-let units = "metric";
-let endpointURL = `https://api.openweathermap.org/data/2.5/weather`;
-let requestUrl = `${endpointURL}?q=New York&appid=${apiKey}&units=${units}`;
+function handleSubmit(event){
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value.trim());
+}
 
-axios.get(requestUrl).then(displayTemperature);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+search("New York")

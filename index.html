@@ -14,19 +14,18 @@
    <div class="container .container-sm">
      <div class="weather-wrapper">
        <div class="weather-app">
-      <form id="search-form" class="mb-3">
-        <div class="row">
-          <div class="col-9">
-            <input class="form-control" type="search" placeholder="Search Location" aria-label="Search" id="search-input" />
+        <form id="search-form" class="mb-3">
+          <div class="row">
+            <div class="col-9">
+              <input class="form-control" type="search" placeholder="Type a city.." aria-label="Search" id="city-input" autocomplete="off" />
+            </div>
+            <div class="col-3">
+              <button class="btn btn-primary w-100" type="submit">Search</button>
+            </div>
           </div>
-          <div class="col-9">
-            <button class="btn btn-primary w-100" type="submit">Search</button>
-          </div>
-        </div>
-      </form>
+        </form>
     <div class="overview">
       <h1 id="city">
-        New York
       </h1>
       <ul>
         <li>Last Update: <span id="date"></span> </li>
