@@ -22,7 +22,6 @@ function formatDate(timestamp){
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -30,7 +29,10 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+
+  celsiusTemperature = response.data.main.temp;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -43,11 +45,36 @@ function displayTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+
+function displayFahrentheitTemperature(event){
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active")
+  fahrenheitLink.classList.add("active")
+  let fahrentheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrentheitTemperature);
+}
+
+function displayCelsiusTemperature(event){
+  event.preventDefault();
+  celsiusLink.classList.add("active")
+  fahrenheitLink.classList.remove("active")
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrentheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
 function search(city){
   let apiKey = "96fc9dbf0bd42fe281a341e984ec7160";
-  let units = "metric";
   let endpointURL = `https://api.openweathermap.org/data/2.5/weather`;
-  let requestUrl = `${endpointURL}?q=${city}&appid=${apiKey}&units=${units}`;
+  let requestUrl = `${endpointURL}?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(requestUrl).then(displayTemperature);
 }
 
@@ -60,4 +87,4 @@ function handleSubmit(event){
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-search("New York")
+search("Sydney")
