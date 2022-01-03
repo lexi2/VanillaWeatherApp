@@ -69,3 +69,21 @@ li::first-letter {
 .current-temperature .active:hover {
   text-decoration: none;
 }
+
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 16px;
+  color: rgb(33, 33, 33);
+}
+
+.forecast-temperatures {
+  font-size: 14px;
+}
+
+.forecast-temp-min {
+  opacity: 0.5;
+}
